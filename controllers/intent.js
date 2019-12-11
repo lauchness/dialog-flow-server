@@ -65,10 +65,7 @@ async function executeQuery(
     console.log(
       `Fulfillment Text: ${intentResponse.queryResult.fulfillmentText}`
     );
-    return {
-      fulfillmentText: intentResponse.queryResult.fulfillmentText,
-      context: intentResponse.queryResult.outputContexts
-    };
+    return intentResponse;
   } catch (error) {
     console.log(error);
   }
@@ -93,6 +90,6 @@ module.exports = {
       languageCode
     );
 
-    res.json(intentResponse);
+    res.status(200).json(intentResponse);
   }
 };
